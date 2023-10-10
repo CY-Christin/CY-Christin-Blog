@@ -5,7 +5,7 @@
 ## CODE MAKES LIFE BETTER  
 1. [Agora web 观看直播开发实践](Agora%20web%20观看直播开发实践.md)
 
-## 做了这么多工作发现钱包里依然没有钱  
+## 做了下面这些工作你会发现钱包里依然没有钱  
 
 1. [土区 Google one 及土区价格开通美区 Google one](土区%20Google%20one%20及土区价格开通美区%20Google%20one.md)  
 
