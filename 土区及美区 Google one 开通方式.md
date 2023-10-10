@@ -5,7 +5,7 @@
 [Google one](https://one.google.com) 是 Google 的一款订阅类商品，可以花钱来购买云存储空间，同时还可以使用 Google one 中的 VPN 功能。当然，此功能在大陆地区是无法直接使用的，需要额外的代理来套娃连接。还有一些小功能例如 Google Photos 修图、暗网密码检测等功能就不做赘述了。  
 由于我个人十分依赖云相册功能，我的照片在 Apple、Google、OneDrive 上都有备份，所以 Google one 对我来说是一个很重要的功能。  
 ### 1. 土区开通 Google one  
-官方有现成的换区[文档](https://support.google.com/googleplay/answer/7431675?hl=zh-Hans&co=GENIE.Platform%3DAndroid )，动手能力强的可以根据官方文档自行操作，次内容可能过时，以官方文档为主。  
+官方有现成的换区[文档](https://support.google.com/googleplay/answer/7431675?hl=zh-Hans&co=GENIE.Platform%3DAndroid )，动手能力强的可以根据官方文档自行操作，此内容可能过时，以官方文档为主。  
 进入官方支付方式[设置页面](https://pay.google.com/)，在设置中点击国家右边的编辑图标，会提示**如果更换国家请添加新的支付方式**，添加一个土耳其的地址（自行百度）。   
 * 如果原来有支付方式  
     切换至原来的支付方式，在页面最下方点击关闭。（一定要仔细阅读关闭的后果，可能涉及到钱财）  
