@@ -9,6 +9,6 @@
 
 ## 做了下面这些工作你会发现钱包里依然没有钱  
 
-1. [土区 Google one 及土区价格开通美区 Google one](土区%20Google%20one%20及土区价格开通美区%20Google%20one.md)  
+1. [土区 Google one 及土区价格开通美区 Google one](土区及美区%20Google%20one%20开通方式.md)  
 
 2. [借用维基百科使用 Google Voice 开通美区 PayPal](借用维基百科使用%20Google%20Voice%20开通美区%20PayPal.md)
