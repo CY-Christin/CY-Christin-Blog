@@ -4,6 +4,8 @@
 
 ## CODE MAKES LIFE BETTER  
 1. [Agora web 观看直播开发实践](Agora%20web%20观看直播开发实践.md)
+  
+2. [macOS 安装 React Native 环境](macOS%20安装%20React%20Native%20环境.md)  
 
 ## 做了下面这些工作你会发现钱包里依然没有钱  
 
