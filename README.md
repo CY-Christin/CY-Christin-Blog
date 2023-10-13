@@ -10,7 +10,9 @@
   
 3. [Node.js 模块化](Node.js%20模块化.md)  
   
-4. [Node.js 流](Node.js%20流.md)
+4. [Node.js 流](Node.js%20流.md)  
+
+5. [ahooks 简介 + 部分源码分析](ahooks%20简介%20+%20部分源码分析.md)
 ## 做了下面这些工作你会发现钱包里依然没有钱  
 
 1. [土区 Google one 及土区价格开通美区 Google one](土区及美区%20Google%20one%20开通方式.md)  
