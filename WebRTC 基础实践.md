@@ -1,0 +1,154 @@
+# WebRTC 基础实践  
+--- 
+WebRTC (Web Real-Time Communications) 是一项实时通讯技术，在 2011 年由 Google 提出，经过 10 年的发展，W3C 于 2021 年正式发布 WebRTC 1.0 标准。  
+![图片 1](WebRTC%20%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5/1.png)  
+WebRTC 标准概括介绍了两种不同的技术：媒体捕获设备和点对点连接（P2P，Peer-to-Peer），可让用户无需安装任何插件或第三方软件的情况下，实现共享桌面、文件传输、视频直播等功能。  
+下图是[官方](https://webrtc.github.io/webrtc-org/architecture/)给出的一张 WebRTC 整体架构设计图：
+![图片 2](WebRTC%20%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5/2.png)  
+- 紫色部分是前端开发所使用的 API。
+- 蓝色实线部分是各大浏览器厂商所使用的 API。
+- 蓝色虚线部分包含可自定义的 3 块：音频引擎、视频引擎和网络传输。  
+
+由于各个浏览器对 WebRTC 的实现有所不同，因此 Google 官方提供了一个适配器脚本库：[adapter.js](https://github.com/webrtc/adapter/)，省去很多兼容工作。
+## 视频预览并拍照  
+demo 放在了[这个位置](WebRTC%20基础实践/demo.html)  
+HTML 部分很简单：
+```html
+<video id="video"></video>
+<button id="btn">拍照</button>
+<canvas id="canvas" width="300" height="300"></canvas>
+<img id="img" alt="照片"/>
+```  
+### 1. getUserMedia()  
+`getUserMedia()` 是 WebRTC 中用于获取媒体流的 API，它接受一个对象作为参数，对象中包含了要获取的媒体类型和一些回调函数。  
+```javascript
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const btn = document.getElementById('btn');
+const img = document.getElementById('img');
+const size = 300;
+/**
+ * 获取媒体流
+ */
+navigator.mediaDevices.getUserMedia({ 
+  video: {
+    width: size, 
+    height: size,
+  }, 
+  audio: false 
+}).then((stream) => {
+  video.srcObject = stream;
+  video.play();
+});
+```  
+getUserMedia() 的参数是一个包含了video 和 audio 两个成员的 MediaStreamConstraints 对象，上面代码将摄像头的分辨率限制为 300 x 300。  
+then() 中的 stream 参数是一个 [MediaStream](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaStream) 媒体流，一个流相当于容器，可以包含几条轨道，例如视频和音频轨道，每条轨道都是独立的。  
+video 元素中的 src 和 [srcObject](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/srcObject) 是一对互斥的属性，后者可关联媒体源，根据规范也可以是 Blob 或者 File 等类型的数据。  
+接着为按钮绑定点击事件，并且在点击时从流中捕获帧，画到 Canvas 内，再导出赋给 img 元素。  
+```javascript
+/**
+ * 点击拍照
+ */
+btn.addEventListener('click', (e) => {
+  const context = canvas.getContext('2d');
+  // 从流中捕获帧
+  context.drawImage(video, 0, 0, size, size);
+  // 将帧导出为图片
+  const data = canvas.toDataURL('image/png');
+  img.setAttribute('src', data);
+}, false);
+```  
+在下图中，左边是 video 元素，打开摄像头后就会有画面，在点击拍照按钮后，右边显示捕获的帧。  
+![图片 3](WebRTC%20%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5/3.jpg)  
+### 2. enumerateDevices()
+MediaDevices 提供了访问媒体输入和输出的设备，例如摄像头、麦克风等，得到硬件资源的媒体数据。
+mediaDevices.[enumerateDevices()](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/enumerateDevices) 会得到一个描述设备的 [MediaDeviceInfo](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo) 的数组。  
+其中 groupId 用于标识多个设备属于同一个物理设备，例如一个显示器内置了摄像头和麦克风。  
+```javascript
+navigator.mediaDevices.enumerateDevices()
+.then((devices) => {
+  devices.forEach((device) => {
+    console.log(`${device.kind}: ${device.label} id = ${device.deviceId}`);
+  });
+})
+```
+### 3. devicechange 事件
+当设备列表发生变化时，会触发 [devicechange](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaDevices/ondevicechange) 事件，例如插拔摄像头。  
+```javascript
+navigator.mediaDevices.ondevicechange = (event) => { }; // event 参数没有附加任何特殊的属性。
+```
+## 共享桌面  
+demo 也放在了[这个位置](WebRTC%20基础实践/demo.html)，根据注释解开对应的代码即可。
+Windows 系统采用的共享桌面协议是 RDP（Remote Desktop Protocal），另一种可在不同操作系统共享桌面的协议是 VNC（Virtual Network Console）。  
+像 TeamViewer 采用的就是后一种协议，而 WebRTC 的远程桌面没有采用传统的 RDP、VNC 等协议，因为不需要远程控制。  
+WebRTC 提供了 getDisplayMedia() 方法采集桌面，在使用上与之前的 getUserMedia() 方法类似。  
+![图片 4](WebRTC%20%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%B7%B5/4.jpg)
+## 录像  
+WebRTC 的录像包括录制音频和视频两种流，通过 [Blob](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob) 对象将数据保存成多媒体文件。  
+### 1. MediaRecorder  
+WebRTC 提供了 MediaRecorder 类，它能接收两个参数，第一个是远程的 MediaStream 媒体流，第二个是配置项。  
+其配置项包括编解码器、音视频码率、容器的 MIME 类型（例如 video/webm、video/mp4 ）等相关信息。  
+先看个示例，HTML结构如下所示，一个 video 元素和两个 button 元素：回放和下载。  
+```html
+<video id="video"></video>
+<button id="playback">回放</button>
+<button id="download">下载</button>
+```
+然后看下录像的整体逻辑，和之前自拍一节类似，也需要调用 getUserMedia() 获取媒体流。  
+在 then() 的回调中实例化 MediaRecorder 类，并配置多媒体格式。  
+其中WebM是一个由Google资助，免版权费用的视频文件格式；VP8是一个开放的影像压缩格式。  
+```javascript
+const video = document.getElementById('video');
+const playback = document.getElementById('playback');
+const download = document.getElementById('download');
+const size = 300;
+const chunks = [];    // 一个由 Blob 对象组成的数组
+navigator.mediaDevices.getUserMedia({ 
+  video: {
+    width: size, 
+    height: size,
+  }, 
+  audio: true 
+}).then((stream) => {
+  // 配置多媒体格式
+  const options = { mimeType: 'video/webm;codecs=vp8' };
+  // 实例化录制对象
+  const recorder = new MediaRecorder(stream, options);
+  // 当收到数据时触发该事件
+  recorder.ondataavailable = function(e) {
+    chunks.push(e.data);    // data 是一个可用的 Blob 对象  
+  }
+  // 开始录制
+  recorder.start(10);
+});
+```
+recorder 的 [dataavailable](https://developer.mozilla.org/zh-CN/docs/Web/API/MediaRecorder/dataavailable_event) 事件会在收到数据时触发，e 参数的 data 属性是一个可用的 Blob 对象。  
+最后在开始录制调用 start() 方法时，可以配置一个毫秒级的时间片，那么在录制时会按照配置的值分割成一个个单独的区块，而不是录制一个非常大的整块内容。  
+分块可以提高效率和可靠性，如果是一整块，那么会变得越来越大，读写效率也会变差。  
+### 2. 回放  
+首先根据 chunks 生成 Blob 对象，再根据 Blob 对象生成 URL 对象。  
+```javascript
+playback.addEventListener('click', () => {
+  // 根据 chunks 生成 Blob 对象
+  const blob = new Blob(chunks, {type: 'video/webm'});
+  // 根据 Blob 对象生成 URL 对象
+  video.src = window.URL.createObjectURL(blob);
+  video.play();
+}, false);
+```
+URL.[createObjectURL](https://developer.mozilla.org/zh-CN/docs/Web/API/URL/createObjectURL) 是一个静态方法，返回值是一个指定的 [File](https://developer.mozilla.org/zh-CN/docs/Web/API/File) 对象或 Blob 对象。
+### 3. 下载
+首先与回放一样，也是生成一个 URL 对象，然后创建 a 元素，将对象赋给 href 属性。  
+并且要指定 download 属性，告诉浏览器下载 URL 而不是导航。  
+```javascript
+download.addEventListener('click', (e) => {
+  const blob = new Blob(chunks, {type: 'video/webm'});
+  const url = window.URL.createObjectURL(blob);
+  // 创建 a 元素
+  const a = document.createElement('a');
+  a.href = url;
+  // 指示浏览器下载 URL 而不是导航
+  a.download = 'test.webm';
+  a.click();
+}, false);
+```

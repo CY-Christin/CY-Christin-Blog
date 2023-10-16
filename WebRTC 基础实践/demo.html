@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<video id="video"></video>
+<button id="btn">拍照</button>
+<canvas id="canvas" width="300" height="300"></canvas>
+<img id="img" alt="照片"/>
+</body>
+</html>
+<script>
+	const video = document.getElementById('video');
+	const canvas = document.getElementById('canvas');
+	const btn = document.getElementById('btn');
+	const img = document.getElementById('img');
+	const size = 300;
+	/**
+	 * 获取媒体流
+	 */
+	// navigator.mediaDevices.getUserMedia({
+	// 	video: {
+	// 		width: size,
+	// 		height: size,
+	// 	},
+	// 	audio: false
+	// }).then((stream) => {
+	// 	video.srcObject = stream;
+	// 	video.play();
+	// });
+	/**
+	 * 点击拍照
+	 */
+	// btn.addEventListener('click', (e) => {
+	// 	const context = canvas.getContext('2d');
+	// 	// 从流中捕获帧
+	// 	context.drawImage(video, 0, 0, size, size);
+	// 	// 将帧导出为图片
+	// 	const data = canvas.toDataURL('image/png');
+	// 	img.setAttribute('src', data);
+	// }, false);
+	/*
+	* 共享桌面
+	* */
+    navigator.mediaDevices.getDisplayMedia({
+        video: {
+            width: 2000,
+            height: 1000
+        }
+    }).then((stream) => {
+        video.srcObject = stream;
+        video.play();
+    });
+</script>
