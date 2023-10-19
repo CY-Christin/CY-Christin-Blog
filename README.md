@@ -20,13 +20,10 @@
 
 8. [async await 原理](async%20await%20原理.md)
 
+## 我们 React 太强啦  
+
+1. [想好再用 useEffect](想好再用%20useEffect.md)
 ## 当我们讨论 XXX 时，我们在讨论什么？
-
-
-## 代码之外的往事  
-
-[代码之外的往事](./LIFE)
-
 
 
 ## 做了下面这些工作你会发现钱包里依然没有钱  
@@ -34,3 +31,9 @@
 1. [土区 Google one 及土区价格开通美区 Google one](土区及美区%20Google%20one%20开通方式.md)  
 
 2. [借用维基百科使用 Google Voice 开通美区 PayPal](借用维基百科使用%20Google%20Voice%20开通美区%20PayPal.md)
+
+
+## 代码之外的往事
+
+[代码之外的往事](./LIFE)
+
