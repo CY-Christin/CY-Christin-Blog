@@ -20,9 +20,10 @@
 
 8. [async await 原理](async%20await%20原理.md)
 
-## 我们 React 太强啦  
+## 关于认真学习 react 新版官网的若干总结
 
 1. [想好再用 useEffect](想好再用%20useEffect.md)
+
 ## 当我们讨论 XXX 时，我们在讨论什么？
 
 
