@@ -2,6 +2,23 @@
 
 ## 目录
 
+## AI 实践
+
+1. [Claude code 多模型协作](./AI%20实践/Claude%20code%20多模型协作.md)
+
+2. [IDE AI Assistant 使用 claude code](./AI%20实践/IDE%20AI%20Assistant%20使用%20claude%20code.md)
+
+3. [Antigravity 做本地 API 中转](./AI%20实践/Antigravity%20做本地%20API%20中转.md)
+
+4. [Claude code status line](./AI%20实践/Claude%20code%20status%20line.md)
+
+5. [dev-browser skills 连接浏览器](./AI%20实践/dev-browser%20skills%20连接浏览器.md)
+
+6. [AI Fluency: Framework & Foundations](./AI%20实践/AI%20Fluency:%20Framework%20&%20Foundations.md)
+
+7. [Claude Code not right](./AI%20实践/Claude%20Code%20not%20right.md)
+
+
 ## CODE MAKES LIFE BETTER  
 
 1. [Agora web 观看直播开发实践](Agora%20web%20观看直播开发实践.md)
@@ -25,6 +42,7 @@
 ## 关于认真学习 react 新版官网的若干总结
 
 1. [想好再用 useEffect](想好再用%20useEffect.md)
+
 
 ## 当我们讨论 XXX 时，我们在讨论什么？
 
