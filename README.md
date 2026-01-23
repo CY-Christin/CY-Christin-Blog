@@ -14,7 +14,7 @@
 
 5. [dev-browser skills 连接浏览器](./AI%20实践/dev-browser%20skills%20连接浏览器.md)
 
-6. [AI Fluency: Framework & Foundations](./AI%20实践/AI%20Fluency:%20Framework%20&%20Foundations.md)
+6. [AI Fluency: Framework & Foundations](./AI%20实践/AI%20Fluency%3A%20Framework%20%26%20Foundations.md)
 
 7. [Claude Code not right](./AI%20实践/Claude%20Code%20not%20right.md)
 
