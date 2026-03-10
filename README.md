@@ -18,6 +18,8 @@
 
 7. [Claude Code not right](./AI%20实践/Claude%20Code%20not%20right.md)
 
+8. [Claude code 添加任务完成提醒](./AI%20实践/claude%20code%20添加任务完成提醒.md)
+
 
 ## CODE MAKES LIFE BETTER  
 
