@@ -20,6 +20,8 @@
 
 8. [Claude code 添加任务完成提醒](./AI%20实践/claude%20code%20添加任务完成提醒.md)
 
+9. [AI 工程化经验记录](./AI%20实践/AI%20工程化经验记录.md)
+
 
 ## CODE MAKES LIFE BETTER  
 
