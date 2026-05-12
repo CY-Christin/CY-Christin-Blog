@@ -22,6 +22,8 @@
 
 9. [AI 工程化经验记录](./AI%20实践/AI%20工程化经验记录.md)
 
+10. [AI coding better practice](./AI%20实践/AI%20coding%20better%20practice.md)
+
 
 ## CODE MAKES LIFE BETTER  
 
