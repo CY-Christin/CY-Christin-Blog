@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: "Christin's Blog",
+  title: "Lex's Blog",
   description: '一个前端开发者的技术与生活记录',
   srcDir: '.',
   srcExclude: ['README.md', 'node_modules/**', '.vitepress/**'],
@@ -17,7 +17,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: 'AI 实践', link: '/AI 实践/Claude code 多模型协作' },
       { text: '前端技术', link: '/浏览器渲染原理' },
-      { text: '关于', link: '/LIFE/亲身经历了一次裁员' },
+      { text: '关于', link: '/about' },
     ],
     sidebar: [
       {
@@ -77,7 +77,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/cy-christin/cy-christin-blog' },
+      { icon: 'github', link: 'https://github.com/CY-Christin' },
     ],
     search: { provider: 'local' },
     outline: { label: '本页目录' },

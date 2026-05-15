@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "Christin's Blog"
+  name: "Lex's Blog"
   text: "前端开发者的技术与生活"
   tagline: 记录 AI 实践、前端技术与那些省钱的折腾
   actions:
