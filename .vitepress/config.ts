@@ -2,8 +2,9 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
-  title: "Christin's Blog",
+  title: "Lex's Blog",
   description: '一个前端开发者的技术与生活记录',
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   srcDir: '.',
   srcExclude: ['README.md', 'node_modules/**', '.vitepress/**'],
   cleanUrls: true,
@@ -12,12 +13,12 @@ export default defineConfig({
     assetsInclude: ['**/*.PNG'],
   },
   themeConfig: {
-    logo: '/img.png',
+    logo: '/logo.svg',
     nav: [
       { text: '首页', link: '/' },
       { text: 'AI 实践', link: '/AI 实践/Claude code 多模型协作' },
       { text: '前端技术', link: '/浏览器渲染原理' },
-      { text: '关于', link: '/LIFE/亲身经历了一次裁员' },
+      { text: '关于', link: '/about' },
     ],
     sidebar: [
       {
@@ -78,7 +79,7 @@ export default defineConfig({
       },
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/cy-christin/cy-christin-blog' },
+      { icon: 'github', link: 'https://github.com/CY-Christin' },
     ],
     search: { provider: 'local' },
     outline: { label: '本页目录' },
