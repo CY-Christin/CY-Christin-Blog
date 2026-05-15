@@ -34,6 +34,7 @@ export default defineConfig({
           { text: 'claude code 添加任务完成提醒', link: '/AI 实践/claude code 添加任务完成提醒' },
           { text: 'AI 工程化经验记录', link: '/AI 实践/AI 工程化经验记录' },
           { text: 'AI coding better practice', link: '/AI 实践/AI coding better practice' },
+          { text: '在 AI coding 发展的现在，如何保持自己的竞争力', link: '/AI 实践/在 AI coding 发展的现在，如何保持自己的竞争力' },
         ],
       },
       {

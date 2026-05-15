@@ -24,6 +24,8 @@
 
 10. [AI coding better practice](./AI%20实践/AI%20coding%20better%20practice.md)
 
+11. [在 AI coding 发展的现在，如何保持自己的竞争力](./AI%20实践/在%20AI%20coding%20发展的现在，如何保持自己的竞争力.md)
+
 
 ## CODE MAKES LIFE BETTER  
 
