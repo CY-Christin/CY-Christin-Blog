@@ -4,6 +4,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: "Lex's Blog",
   description: '一个前端开发者的技术与生活记录',
+  head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
   srcDir: '.',
   srcExclude: ['README.md', 'node_modules/**', '.vitepress/**'],
   cleanUrls: true,
@@ -12,7 +13,7 @@ export default defineConfig({
     assetsInclude: ['**/*.PNG'],
   },
   themeConfig: {
-    logo: '/img.png',
+    logo: '/logo.svg',
     nav: [
       { text: '首页', link: '/' },
       { text: 'AI 实践', link: '/AI 实践/Claude code 多模型协作' },
